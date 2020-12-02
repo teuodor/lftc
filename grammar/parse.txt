@@ -1,0 +1,38 @@
+<program> -> <define>; int main ( ) { <decl>; <instr_list> return 0; }
+<define> -> typedef <variable_type> <type_list>
+<decl> -> <variable_type> <variable_list>
+
+<instr_list> -> <instr> <instr_list>
+<instr_list> -> <instr>
+<instr> -> <instr_assignment>;
+<instr> -> <instr_if>
+<instr> -> <instr_loop>
+<instr> -> <instr_out>
+<instr> -> <instr_in>
+<instr_assignment> -> ID = <expr>
+
+<instr_if> -> if ( <expr_comp> ) { <instr_list> }
+<instr_if> -> if ( <expr_comp> ) { <instr_list> } else { <instr_list> }
+
+<instr_loop> -> while ( <expr_comp> ) { <instr_list> }
+
+<expr> -> ID
+<expr> -> Const
+<expr> -> <expr> Operator ID
+
+<expr_comp> -> ID == ID
+<expr_comp> -> ID > ID
+<expr_comp> -> ID > Const
+<expr_comp> -> <expr_comp> & <expr_comp>
+
+<instr_out> -> std::cout << ID
+<instr_in> - > std::cin >> ID
+
+<variable_list> -> ID , <variable_list>
+<variable_list> -> ID
+<variable_type> -> int
+<variable_type> -> float
+<variable_type> -> Type
+
+<type_list> -> Type , <type_list>
+<type_list> -> Type
